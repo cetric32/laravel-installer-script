@@ -8,14 +8,28 @@ exists(){
 
 #checking if php is installed
 if !( exists php); then
- 	echo "PHP is not installed. Aborting..."
-	exit 1
+ 	echo "PHP is not installed."
+	echo 'Would you like to install php?(y/n)'
+	read ans
+	if [ $ans == 'y' -o $ans == 'Y']
+		sudo apt install php
+	else
+		echo "Aborting..."
+		exit 1
+	fi
 fi
 
 #checking if composer is installed
 if ! (exists composer); then
  	echo "Composer is not installed. Aborting..."
-	exit 1
+	echo 'Would you like to install Composer?(y/n)'
+	read ans
+	if [ $ans == 'y' -o $ans == 'Y']
+		sudo apt install composer
+	else
+		echo "Aborting..."
+		exit 1
+	fi
 fi
 
 if [ $# -gt 0 ]; then
