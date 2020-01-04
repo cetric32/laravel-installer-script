@@ -1,5 +1,23 @@
 #!/bin/bash
 #script for creating laravel projects
+
+#function to check if command exists
+exists(){
+    command -v "$1" >  /dev/null 2>&1
+}
+
+#checking if php is installed
+if !( exists php); then
+ 	echo "PHP is not installed. Aborting..."
+	exit 1
+fi
+
+#checking if composer is installed
+if ! (exists composer); then
+ 	echo "Composer is not installed. Aborting..."
+	exit 1
+fi
+
 if [ $# -gt 0 ]; then
 	composer create-project --prefer-dist laravel/laravel $1;
 else
