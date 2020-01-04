@@ -6,12 +6,11 @@ exists(){
     command -v "$1" >  /dev/null 2>&1
 }
 
-#checking if php is installed
 if !( exists php); then
  	echo "PHP is not installed."
 	echo 'Would you like to install php?(y/n)'
 	read ans
-	if [ $ans == 'y' -o $ans == 'Y']
+	if [ $ans == 'y' -o $ans == 'Y' ]; then 
 		sudo apt install php
 	else
 		echo "Aborting..."
@@ -24,7 +23,7 @@ if ! (exists composer); then
  	echo "Composer is not installed. Aborting..."
 	echo 'Would you like to install Composer?(y/n)'
 	read ans
-	if [ $ans == 'y' -o $ans == 'Y']
+	if [ $ans == 'y' -o $ans == 'Y' ]; then 
 		sudo apt install composer
 	else
 		echo "Aborting..."
